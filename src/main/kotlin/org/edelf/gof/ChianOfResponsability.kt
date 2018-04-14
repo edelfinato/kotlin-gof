@@ -11,7 +11,8 @@ sealed class File(val content:String){
     }
 }
 
-fun parseText(file:File?): String? {
+fun parseText(file:File): String? {
+    println(Throwable().stackTrace[0])
     if (file is File.TextFile){
         return file.content
     }
@@ -20,6 +21,7 @@ fun parseText(file:File?): String? {
 
 
 fun parseAudio(file:File?): String? {
+    println(Throwable().stackTrace[0])
     if (file is File.AudioFile){
         return file.content
     }
@@ -28,6 +30,7 @@ fun parseAudio(file:File?): String? {
 
 
 fun parseVideo(file:File?): String? {
+    println(Throwable().stackTrace[0])
     if (file is File.VideoFile){
         return file.content
     }
@@ -36,10 +39,11 @@ fun parseVideo(file:File?): String? {
 
 
 fun parsePresentation(file:File?): String? {
+    println(Throwable().stackTrace[0])
     if (file is File.PresetationFile){
         return file.content
     }
     return null
 }
 
-val funs = listOf(::parseAudio, ::parsePresentation, ::parseText, ::parseVideo)
+val funs = listOf(::parseAudio, ::parsePresentation, ::parseVideo ,::parseText)
